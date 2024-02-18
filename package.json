@@ -1,0 +1,14 @@
+{
+  "name": "frontend_miniproj",
+  "version": "1.0.0",
+  "description": "the code for the web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pulkits",
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^4.4.0"
+  }
+}
