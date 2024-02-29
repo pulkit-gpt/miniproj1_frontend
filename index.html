@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slider and Radio Button</title>
+  </head>
+  <body>
+    <h1>Slider and Radio Button</h1>
+
+    <form id="myForm">
+      <label for="slider">Slider:</label>
+      <input
+        type="range"
+        id="slider"
+        name="slider"
+        min="1"
+        max="65535"
+        value="32768"
+        onchange="updateSliderValue(this.value)"
+      />
+      <div id="sliderValue">32768</div>
+
+      <label for="Forward">Forward:</label>
+      <input type="radio" id="forward" name="option" value="forward" />
+
+      <label for="backward">Backward:</label>
+      <input type="radio" id="backward" name="option" value="backward" />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function updateSliderValue(value) {
+        document.getElementById("sliderValue").textContent = value;
+      }
+
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var sliderValue = document.getElementById("slider").value;
+          var optionValue = document.querySelector(
+            'input[name="option"]:checked'
+          ).value;
+
+          var jsonData = JSON.stringify({
+            slider: sliderValue,
+            option: optionValue,
+          });
+
+          fetch("http://localhost:5519/motor", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: jsonData,
+          })
+            .then((response) => {
+              response.json();
+            })
+            .then((data) => console.log(data))
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
