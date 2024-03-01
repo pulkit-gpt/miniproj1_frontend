@@ -28,6 +28,10 @@
       <input type="submit" value="Submit" />
     </form>
 
+    <form id="stopForm">
+      <input type="submit" value="Stop" />
+    </form>
+
     <script>
       function updateSliderValue(value) {
         document.getElementById("sliderValue").textContent = value;
@@ -54,6 +58,23 @@
               "Content-Type": "application/json",
             },
             body: jsonData,
+          })
+            .then((response) => {
+              response.json();
+            })
+            .then((data) => console.log(data))
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+
+      document
+        .getElementById("stopForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          fetch("https://g374xrbf-5519.inc1.devtunnels.ms/motor/stop", {
+            method: "GET",
           })
             .then((response) => {
               response.json();
