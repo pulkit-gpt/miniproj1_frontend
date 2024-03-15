@@ -32,6 +32,12 @@
       <input type="submit" value="Stop" />
     </form>
 
+    <div>
+      <br />
+      UPDATE:
+      <p id="update-count">0</p>
+    </div>
+
     <script>
       function updateSliderValue(value) {
         document.getElementById("sliderValue").textContent = value;
@@ -84,6 +90,23 @@
               console.error("Error:", error);
             });
         });
+
+      const updateDiv = document.getElementById("update-count");
+
+      const updateContent = async () => {
+        try {
+          const response = await fetch(
+            "https://g374xrbf-5519.inc1.devtunnels.ms/tut/update"
+          );
+          const data = await response.json();
+          updateDiv.textContent = data.message;
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
+      // Call the function every 5 seconds
+      setInterval(updateContent, 1000);
     </script>
   </body>
 </html>
