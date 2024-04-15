@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdf5e6;
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 25vh;
+}
+
+label {
+  color: #4caf50;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.custom-slider:hover {
+  opacity: 1;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+#sliderValue {
+  text-align: left;
+  padding-left: 23vw;
+  font-size: 15px;
+  color: #4caf50;
+}
+
+#room {
+  margin-top: 10px;
+  background-color: #9ae499;
+  color: #388e3c; /* Change the text color */
+  padding: 5px; /* Add some padding */
+  border: none; /* Remove the default border */
+  width: 125px; /* Set a specific width */
+  -webkit-appearance: none; /* Remove the default appearance */
+  -moz-appearance: none; /* Remove the default appearance */
+  appearance: none; /* Remove the default appearance */
+}
+
+.custom-radio {
+  margin-top: 10px;
+  flood-color: #4caf50;
+  margin-bottom: 10px;
+}
+
+label[for="backward"] {
+  color: red;
+}
+
+label[for="forward"] {
+  color: green;
+}
+
+.submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.stop {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}

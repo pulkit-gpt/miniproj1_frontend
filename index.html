@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Slider and Radio Button</title>
   </head>
   <body>
-    <h1>Slider and Radio Button</h1>
+    <h1 class="heading1">SMART IV SYSTEM</h1>
 
     <form id="myForm">
-      <label for="slider">Slider:</label>
+      <label for="slider">Flow rate:</label>
       <input
         type="range"
         id="slider"
+        class="custom-slider"
         name="slider"
         min="1"
         max="65535"
@@ -19,24 +23,38 @@
       />
       <div id="sliderValue">32768</div>
 
+      <label for="room">Room No:</label>
+      <select id="room" name="room">
+        <option value="">Select...</option>
+        <option value="306">306</option>
+        <option value="301">301</option>
+      </select>
+      <br />
+
       <label for="Forward">Forward:</label>
-      <input type="radio" id="forward" name="option" value="forward" />
+      <input
+        type="radio"
+        class="custom-radio"
+        id="forward"
+        name="option"
+        value="forward"
+      />
 
       <label for="backward">Backward:</label>
-      <input type="radio" id="backward" name="option" value="backward" />
-
-      <input type="submit" value="Submit" />
+      <input
+        type="radio"
+        class="custom-radio"
+        id="backward"
+        name="option"
+        value="backward"
+      />
+      <br />
+      <input type="submit" class="submit" value="Submit" />
     </form>
 
     <form id="stopForm">
-      <input type="submit" value="Stop" />
+      <input type="submit" class="stop" value="Stop" />
     </form>
-
-    <div>
-      <br />
-      UPDATE:
-      <p id="update-count">0</p>
-    </div>
 
     <script>
       function updateSliderValue(value) {
@@ -52,10 +70,11 @@
           var optionValue = document.querySelector(
             'input[name="option"]:checked'
           ).value;
-
+          var roomValue = document.getElementById("room").value;
           var jsonData = JSON.stringify({
             slider: sliderValue,
             option: optionValue,
+            room: roomValue,
           });
 
           fetch("https://g374xrbf-5519.inc1.devtunnels.ms/motor", {
@@ -79,18 +98,25 @@
         .addEventListener("submit", function (event) {
           event.preventDefault();
 
+          // Get the room value from the dropdown menu
+          var room = document.getElementById("room").value;
+
           fetch("https://g374xrbf-5519.inc1.devtunnels.ms/motor/stop", {
-            method: "GET",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            // Include the room value in the body of the request
+            body: JSON.stringify({ room: room }),
           })
             .then((response) => {
-              response.json();
+              return response.json();
             })
             .then((data) => console.log(data))
             .catch((error) => {
               console.error("Error:", error);
             });
         });
-
       const updateDiv = document.getElementById("update-count");
 
       const updateContent = async () => {
