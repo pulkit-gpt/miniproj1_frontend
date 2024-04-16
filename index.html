@@ -16,12 +16,13 @@
         id="slider"
         class="custom-slider"
         name="slider"
-        min="1"
+        min="51000"
         max="65535"
-        value="32768"
-        onchange="updateSliderValue((this.value * 0.0004).toFixed(2))"
+        value="59931"
+        onchange="updateSliderValue((((this.value - 51000)/(65535 - 51000))*(160 - 60) + 60).toFixed(2))"
       />
-      <div id="sliderValue">13.11</div>
+      <div id="sliderValue">108</div>
+      <div id = "dropsmin">drops/min</div>
 
       <label for="room">Room No:</label>
       <select id="room" name="room">
@@ -29,6 +30,10 @@
         <option value="306">306</option>
         <option value="301">301</option>
       </select>
+      <br />
+
+      <label for = "time" id = "duration">Duration: </label>
+      <input type="time" id="time-input" name="time" step="1">
       <br />
 
       <label for="Forward">Forward:</label>
@@ -71,10 +76,16 @@
             'input[name="option"]:checked'
           ).value;
           var roomValue = document.getElementById("room").value;
+          var timeValue = document.getElementById("time-input").value;
+
+          var timeParts = timeValue.split(':');
+          var timeValueMilliseconds = (+timeParts[0] * (60000 * 60)) + (+timeParts[1] * 60000) + (+timeParts[2] * 1000);
+
           var jsonData = JSON.stringify({
             slider: sliderValue,
             option: optionValue,
             room: roomValue,
+            time: timeValueMilliseconds,
           });
 
           fetch("https://g374xrbf-5519.inc1.devtunnels.ms/motor", {

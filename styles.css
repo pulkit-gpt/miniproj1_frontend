@@ -62,6 +62,20 @@ label {
   color: #4caf50;
 }
 
+#dropsmin {
+  text-align: left;
+  padding-left: 21.75vw;
+  font-size: 15px;
+  color: #4caf50;
+}
+
+#duration {
+  text-align: left;
+  padding-left: 0.5vw;
+  font-size: 15px;
+  color: #4caf50;
+}
+
 #room {
   margin-top: 10px;
   background-color: #9ae499;
