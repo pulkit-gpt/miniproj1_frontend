@@ -76,9 +76,9 @@ label {
   color: #4caf50;
 }
 
-#room {
+#time-input {
   margin-top: 10px;
-  background-color: #9ae499;
+  background-color: #deffdb;
   color: #388e3c; /* Change the text color */
   padding: 5px; /* Add some padding */
   border: none; /* Remove the default border */
@@ -87,6 +87,19 @@ label {
   -moz-appearance: none; /* Remove the default appearance */
   appearance: none; /* Remove the default appearance */
 }
+
+#room {
+  margin-top: 10px;
+  background-color: #deffdb;
+  color: #388e3c; /* Change the text color */
+  padding: 5px; /* Add some padding */
+  border: none; /* Remove the default border */
+  width: 125px; /* Set a specific width */
+  -webkit-appearance: none; /* Remove the default appearance */
+  -moz-appearance: none; /* Remove the default appearance */
+  appearance: none; /* Remove the default appearance */
+}
+
 
 .custom-radio {
   margin-top: 10px;
