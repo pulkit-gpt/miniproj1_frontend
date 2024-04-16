@@ -19,9 +19,9 @@
         min="1"
         max="65535"
         value="32768"
-        onchange="updateSliderValue(this.value)"
+        onchange="updateSliderValue((this.value * 0.0004).toFixed(2))"
       />
-      <div id="sliderValue">32768</div>
+      <div id="sliderValue">13.11</div>
 
       <label for="room">Room No:</label>
       <select id="room" name="room">
